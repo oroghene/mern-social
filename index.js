@@ -13,7 +13,7 @@ const path = require("path");
 
 dotenv.config();
 const app = express();
-const port = process.env.PORT || 8800;
+// const port = process.env.PORT || 8800;
 
 mongoose.connect(process.env.MONGO_URL, {useNewUrlParser: true, useUnifiedTopology: true}, () => {
     console.log("Connected to MongoDB")
@@ -58,6 +58,6 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '/client/build', 'index.html'));
 });
 
-app.listen(port, () => {
+app.listen(process.env.PORT || 8800, () => {
     console.log("Backend server is running!")
 });
